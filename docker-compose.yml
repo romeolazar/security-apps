@@ -11,27 +11,17 @@ volumes:
   pi-hole:
     name: pi-hole
   pi-hole-dnsmasq:
-    name:pi-hole-dnsmasq
-#we put all containers under the same newtwork
+    name: pi-hole-dnsmasq
+
+#we put all containers under the same network
 networks:
   securityNetwork:
     driver: bridge
     name: security_network
-    ipam:
-      config:
-        - subnet: 10.3.0.0/16
-  additionalNetwork:
-    driver: bridge
-    name: add_network
-    ipam:
-      config:
-        - subnet: 10.7.0.0/16
-  managementNetwork:
-    driver: bridge
-    name: management_network
-    ipam:
-      config:
-        - subnet: 10.6.0.0/16
+#    ipam:
+#      config:
+#        - subnet: 10.3.0.0/16
+
 services:
   #This project was known as Bitwarden_RS and has been renamed to separate itself from the official Bitwarden server in the hopes of avoiding confusion and trademark/branding issues.
   vaultwarden:
