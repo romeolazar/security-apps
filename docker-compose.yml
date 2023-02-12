@@ -51,9 +51,7 @@ services:
       - 'npm:/data'
       - 'npm:/etc/letsencrypt'
     networks:
-      - securityNetwork
-      - additionalNetwork
-      - managementNetwork
+      - internal-network
     restart: always
   #ad-adguard
   adguard:
