@@ -10,7 +10,8 @@ volumes:
     name: adguard
   pi-hole:
     name: pi-hole
-
+  pi-hole-dnsmasq:
+    name:pi-hole-dnsmasq
 #we put all containers under the same newtwork
 networks:
   securityNetwork:
@@ -84,3 +85,24 @@ services:
     #      - 3000:3000/tcp
     network_mode: host
     restart: always
+# More info at https://github.com/pi-hole/docker-pi-hole/ and https://docs.pi-hole.net/
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    # For DHCP it is recommended to remove these ports and instead add: network_mode: "host"
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "67:67/udp" # Only required if you are using Pi-hole as your DHCP server
+      - "80:80/tcp"
+    environment:
+      TZ=${TZ}
+      WEBPASSWORD=${PASSWORD} # 'set a secure password here or it will be random'
+    # Volumes store your data between container upgrades
+    volumes:
+      - pi-hole:/etc/pihole
+      - pi-hole-dnsmasq:/etc/dnsmasq.d
+    #   https://github.com/pi-hole/docker-pi-hole#note-on-capabilities
+#    cap_add:
+ #     - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed
+    restart: unless-stopped
