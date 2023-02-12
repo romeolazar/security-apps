@@ -8,6 +8,8 @@ volumes:
     name: npm
   adguard:
     name: adguard
+  pi-hole:
+    name: pi-hole
 
 #we put all containers under the same newtwork
 networks:
