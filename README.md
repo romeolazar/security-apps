@@ -26,11 +26,6 @@ AdGuardHome is a network-wide software for blocking ads and tracking. After you 
 DockerHub: [adguard/adguardhome](https://hub.docker.com/r/adguard/adguardhome) \
 GitHub: [AdguardTeam/AdGuardHome](https://github.com/AdguardTeam/AdGuardHome/wiki/Docker)
 
-### [Pi-hole](https://pi-hole.net)
-Network-wide Ad Blocking. \
-DockerHub: [pihole/pihole](https://hub.docker.com/r/pihole/pihole) \
-GitHub: [pi-hole/pi-hole](https://github.com/pi-hole/docker-pi-hole/#running-pi-hole-docker)
-
 ## Info
 Because all the services are setup with `docker-compose` they can all reach each other by their Docker Compose service name. So for example when connecting Sonarr with Jacket or qBittorrent, then Jackett would be available on `http://jackett/api....`, which makes everything a lot easier.
 
